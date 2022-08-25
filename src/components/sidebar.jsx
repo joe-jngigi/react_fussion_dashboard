@@ -4,10 +4,12 @@ import {MdOutlineDashboard, MdOutlineCancel} from 'react-icons/md'
 import {TooltipComponent} from '@syncfusion/ej2-react-popups'
 
 import { links } from '../data/dummy'
+
+import { useStateContext } from '../contexts/ContextProvider'
 const Sidebar = () => {
   // Know menu is active => from the context
   // replace
-  const activemenu = true
+  const {activeMenu,setActiveMenu } = useStateContext()
 
   const activeLink = 'flex items-center gap-5 pl-4 pt-3 pb-2.5 text-md m-2 rounded-lg text-black'
   const normalLink = 'flex items-center gap-5 pl-4 pt-3 pb-2.5 text-md rounded-lg text-gray-700 dark:text-gray-200 hover:bg-light-gray dark:hover:text-black m-2'
@@ -16,25 +18,25 @@ const Sidebar = () => {
     <div className='ml-3 pb-10 h-screen overflow-auto md:overflow-hidden md:hover:overflow-auto'>
 
       {
-        activemenu && (
+        activeMenu && (
           <>
           <div className="flex justify-between items-center">
             
             {/* Dashboard btn */}
             <Link to='/' className='items-center gap-3 ml-3 mt-4 flex text-xl tracking-tight font-extrabold text-slate-900 dark:text-white'
-            onClick={() =>{
-
-            }
-            }>
+            onClick={() => setActiveMenu(false)}>
               <MdOutlineDashboard/><span>Dashboard</span>
             </Link>
 
             {/* Cancel button */}
             <TooltipComponent content='Menu' position='BottomCenter'>
               <button className='text-xl p-3 rounded-full hover:bg-light-gray mt-4 block md:hidden'
-              onClick={() =>{
-
-              }}
+              onClick={() =>
+                // Add a callback function
+                setActiveMenu((prevactiveMenu) =>
+                // !activeMenu
+                prevactiveMenu)
+              }
               >
                 <MdOutlineCancel/>
               </button>
