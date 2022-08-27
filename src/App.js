@@ -13,8 +13,9 @@ import { Administrator, Kanban, Orders, Employees, Editor, Customers, ColorPicke
 Calendar, Area, Bar, ColorMapping,Financial, Line, Pie, Pyramid, Stacked} from './pages';
 import './App.css';
 
-import { useStateContext } from './contexts/ContextProvider';
+import { useStateContext } from './contexts/context_provider';
 const App = () => {
+  //In the context_provider, the statevalue for active menu is 'true'
   const {activeMenu} = useStateContext()
   return (
     <div>
@@ -32,6 +33,7 @@ const App = () => {
         {/* In this, it checks the state of the menu using the if statement */}
         {/* (condition) ? statement :(else) statement */}
         {
+          //If sidebar is activeMenu, then sidebar === true value, hence it is open, else, it will be closed
           activeMenu ?(
             <div className='w-72 fixed sidebar dark:bg-secondary-dark-bg bg-white'>
               <Sidebar/>

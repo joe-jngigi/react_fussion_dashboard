@@ -1,6 +1,6 @@
 import React, {useContext, createContext, useState} from "react";
 
-const StateContext = createContext();
+const StateContext = React.createContext();
 
 // This will be the state of the different mini-apps that are clicked to be opened or closed
 const intialState = {
@@ -11,7 +11,7 @@ const intialState = {
 }
 
 // The context provider is an arrow function that returns the StateContext.Provider
-export const CotextProvider = ({children}) =>{
+export const ContextProvider = ({children}) =>{
     // Our applications logic
     // So this state will be passed to the value in statecontext.provider
     const [activeMenu, setActiveMenu] = useState(true)
@@ -33,5 +33,5 @@ export const CotextProvider = ({children}) =>{
         </StateContext.Provider>
 )}
 
-// A function that returns the call to useContext, but we pass in what contet we want to use
-export const useStateContext = () => useContext
+// A function that returns the call to useContext, but we pass in what content we want to use
+export const useStateContext = () => useContext(StateContext)

@@ -5,7 +5,8 @@ import {TooltipComponent} from '@syncfusion/ej2-react-popups'
 
 import { links } from '../data/dummy'
 
-import { useStateContext } from '../contexts/ContextProvider'
+//The use state context, has the data value 
+import { useStateContext } from '../contexts/context_provider'
 const Sidebar = () => {
   // Know menu is active => from the context
   // replace
@@ -35,7 +36,7 @@ const Sidebar = () => {
                 // Add a callback function
                 setActiveMenu((prevactiveMenu) =>
                 // !activeMenu
-                prevactiveMenu)
+                !prevactiveMenu)
               }
               >
                 <MdOutlineCancel/>
