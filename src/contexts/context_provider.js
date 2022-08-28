@@ -3,7 +3,7 @@ import React, {useContext, createContext, useState} from "react";
 const StateContext = React.createContext();
 
 // This will be the state of the different mini-apps that are clicked to be opened or closed
-const intialState = {
+const initialState = {
     chat: false,
     cart: false,
     userprofile: false,
@@ -15,7 +15,11 @@ export const ContextProvider = ({children}) =>{
     // Our applications logic
     // So this state will be passed to the value in statecontext.provider
     const [activeMenu, setActiveMenu] = useState(true)
+    const [isClicked, setisClicked] = useState(initialState)
 
+    const handleClick = (clicked) =>{
+        setisClicked(clicked)
+    }
     return(
         <StateContext.Provider
         // Whatever values that are passed trhough here, they are passed to any of the components in our 
@@ -24,7 +28,7 @@ export const ContextProvider = ({children}) =>{
             // Pass as objects
             // Key: value ; in this case we will put only one since they are the same
             // test: 'test'
-            {activeMenu, setActiveMenu,}
+            {activeMenu, setActiveMenu, isClicked, setisClicked}
         }
         >
         {/* Here, children are returned => whatever you wrap in your context, eg a component will be displayed
