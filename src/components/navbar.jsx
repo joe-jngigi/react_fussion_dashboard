@@ -12,11 +12,29 @@ import {Cart, Chat, Notification, UserProfile} from '.'
 import { useStateContext } from "../contexts/context_provider"
 
 const Navbar = () => {
-  const {activeMenu, setActiveMenu, isClicked, setisclicked} = useStateContext();
-  console.log(isClicked)
-  console.log(setisclicked)
+  const {activeMenu, setActiveMenu, isClicked, setisclicked, handleClick, screenSize, setscreenSize } = useStateContext();
+  // console.log(isClicked)
+  // console.log(setisclicked)
+  // console.log(handleClick)
+  // Accepts a callback function and a dependecy array
+  useEffect(() =>{
+    const handleResize = () => setscreenSize(window.innerWidth)
+    window.addEventListener('resize', handleResize)
+
+    handleResize();
+
+    return() => window.removeEventListener('resize', handleResize)
+  },[])
+
+  useEffect(() =>{
+    if (screenSize <= 900){
+      setActiveMenu(false)
+    }else{
+      setActiveMenu(true)
+    }
+  }, [screenSize ])
   return (
-    <div className="flex justify-between p-2 md:mx-6 relative bg-main-dark-bg">
+    <div className="flex justify-between p-2 md:mx-6 relative ">
       {/* pass the props */}
       {/* CLOSE SIDEBAR BUTTON */}
       <NavButton title='Menu' color='blue' icon={<AiOutlineMenu/>} 
@@ -28,10 +46,10 @@ const Navbar = () => {
 
       {/* NAVIGATE DIFFERENT MINI_APP ACTIONS AND PROFILE INFORMATION */}
       <div className="flex">
-          <NavButton title='Cart' color='blue' icon={<FiShoppingCart/>} 
+          <NavButton title='Cart' color='blue' icon={<FiShoppingCart/>}
             customFun={() => handleClick('cart')}
           />
-          <NavButton title='Chat' dotColor='#03C9D7' color='blue' icon={<BsChatLeft/>} 
+          <NavButton title='Chat' dotColor='#03C9D7' color='blue' icon={<BsChatLeft/>}
             customFun={() => handleClick('chat')}
           />
           <NavButton title='Notifications' dotColor='#03C9D7' color='blue' icon={<RiNotification3Line/>} 
@@ -40,7 +58,9 @@ const Navbar = () => {
 
           {/* USER PROFILE */}
           <TooltipComponent content='Profile' position="BottomCenter">
-            <div className="flex items-center gap-2 cursor-pointer p-2 hover:bg-light-gray rounded-lg">
+            <div className="flex items-center gap-2 cursor-pointer p-2 hover:bg-light-gray rounded-lg"
+            onClick={() => handleClick('userprofile')}
+          >
               <img src={avatar} alt="User profile" className="rounded-full h-8  w-8" />
               <p className="text-gray-400 text-14">
                 <span className="">Hi, </span>{' '}
@@ -51,9 +71,13 @@ const Navbar = () => {
           </TooltipComponent>
 
           {isClicked.chat && <Chat/>}
+          {console.log(isClicked.chat)}
           {isClicked.cart && <Cart/>}
+          {console.log(isClicked.cart)}
           {isClicked.userprofile && <UserProfile/>}
-          {isClicked.notification && <UserProfile />}
+          {console.log(isClicked.userprofile)}
+          {isClicked.notification && <Notification />}
+          {console.log(isClicked.notification)}
       </div>
     </div>
   )
@@ -67,9 +91,9 @@ const NavButton = ({title, customFun, icon, color, dotColor}) => (
     className="relative text-xl rounded-full p-3 hover:bg-light-gray"
     >
       <span className="absolute inline-flex rounded-full h-2 w-2 right-2 top-2" 
-      style={{background:dotColor}}>
-        {icon}
-      </span>
+      style={{background:dotColor}}
+      />
+      {icon}
     </button>
   </TooltipComponent>
 )

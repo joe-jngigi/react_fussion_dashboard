@@ -10,10 +10,16 @@ import { useStateContext } from '../contexts/context_provider'
 const Sidebar = () => {
   // Know menu is active => from the context
   // replace
-  const {activeMenu,setActiveMenu } = useStateContext()
+  const {activeMenu,setActiveMenu, screenSize } = useStateContext()
 
   const activeLink = 'flex items-center gap-5 pl-4 pt-3 pb-2.5 text-md m-2 rounded-lg text-black'
   const normalLink = 'flex items-center gap-5 pl-4 pt-3 pb-2.5 text-md rounded-lg text-gray-700 dark:text-gray-200 hover:bg-light-gray dark:hover:text-black m-2'
+
+  const handleCloseSideBar = () => {
+    if (activeMenu && screenSize <= 900){
+      setActiveMenu(false)
+    }
+  }
   return (
     // md => medium device which means min-width = 768px
     <div className='ml-3 pb-10 h-screen overflow-auto md:overflow-hidden md:hover:overflow-auto'>
@@ -25,7 +31,7 @@ const Sidebar = () => {
             
             {/* Dashboard btn */}
             <Link to='/' className='items-center gap-3 ml-3 mt-4 flex text-xl tracking-tight font-extrabold text-slate-900 dark:text-white'
-            onClick={() => setActiveMenu(false)}>
+            onClick={handleCloseSideBar}>
               <MdOutlineDashboard/><span>Dashboard</span>
             </Link>
 
@@ -56,9 +62,7 @@ const Sidebar = () => {
                       // is active is given by using the NavLink by react-router-dom
                       <NavLink className={({isActive}) => isActive ? activeLink : normalLink}
                       to={`/${link.name}`} key ={link.name}
-                      onClick = {() =>{
-
-                      }}
+                      onClick = {handleCloseSideBar}
                       >
                       {console.log(link.name)}
                       <span className='text-green-700'>{link.icon}</span>
