@@ -474,7 +474,7 @@ export const links = [
     title: 'Administrator',
     links: [
       {
-        name: 'Administrator',
+        name: 'admin_main',
         icon: <MdOutlineDashboard />,
       },
     ],
