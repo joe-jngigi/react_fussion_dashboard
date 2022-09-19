@@ -474,7 +474,7 @@ export const links = [
     title: 'Administrator',
     links: [
       {
-        name: 'admin_main',
+        name: 'Administrator',
         icon: <MdOutlineDashboard />,
       },
     ],
@@ -513,7 +513,7 @@ export const links = [
         icon: <FiEdit />,
       },
       {
-        name: 'color-picker',
+        name: 'Color_Picker',
         icon: <BiColorFill />,
       },
     ],
@@ -3083,11 +3083,18 @@ export const dropdownData = [
   },
 ];
 export const SparklineAreaData = [
-  { x: 1, yval: 2 },
-  { x: 2, yval: 6 },
-  { x: 3, yval: 8 },
-  { x: 4, yval: 5 },
-  { x: 5, yval: 10 },
+
+  { x: 'Mon', y: 3 },
+  { x: 'Tue', y: 5 },
+  { x: 'Wed', y: 2 },
+  { x: 'Thu', y: 4 },
+  { x: 'Fri', y: 6 },
+  
+  // { x: 1, yval: 2 },
+  // { x: 2, yval: 6 },
+  // { x: 3, yval: 8 },
+  // { x: 4, yval: 5 },
+  // { x: 5, yval: 10 },
 
 ];
 

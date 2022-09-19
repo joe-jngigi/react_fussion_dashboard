@@ -23,6 +23,21 @@ export const ContextProvider = ({children}) =>{
     }
 
     const [screenSize, setscreenSize] = useState(undefined)
+    const [currentColor, setCurrentColor] = useState('#03C9D7')
+    const [currentMode, setCurrentMode] = useState('Light')
+
+    const setMode = (e) => {
+        setCurrentMode(e.target.value);
+        localStorage.setItem('themeMode', e.target.value);
+        setThemeSettings(false)
+    }
+    const setColor = (color) => {
+        setCurrentColor(color);
+        localStorage.setItem('colorMode', color);
+        setThemeSettings(false)
+    }
+
+    const [themeSettings, setThemeSettings] = useState(false)
     return(
         <StateContext.Provider
         // Whatever values that are passed trhough here, they are passed to any of the components in our 
@@ -31,7 +46,8 @@ export const ContextProvider = ({children}) =>{
             // Pass as objects
             // Key: value ; in this case we will put only one since they are the same
             // test: 'test'
-            {activeMenu, setActiveMenu, isClicked, setisClicked, handleClick, screenSize, setscreenSize}
+            {activeMenu, setActiveMenu, isClicked, setisClicked, handleClick, screenSize, setscreenSize,
+            setColor, setMode, currentMode, currentColor, setThemeSettings, themeSettings}
         }
         >
         {/* Here, children are returned => whatever you wrap in your context, eg a component will be displayed

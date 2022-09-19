@@ -10,7 +10,7 @@ import { useStateContext } from '../contexts/context_provider'
 const Sidebar = () => {
   // Know menu is active => from the context
   // replace
-  const {activeMenu,setActiveMenu, screenSize } = useStateContext()
+  const {activeMenu,setActiveMenu, screenSize,currentColor } = useStateContext()
 
   const activeLink = 'flex items-center gap-5 pl-4 pt-3 pb-2.5 text-md m-2 rounded-lg text-black'
   const normalLink = 'flex items-center gap-5 pl-4 pt-3 pb-2.5 text-md rounded-lg text-gray-700 dark:text-gray-200 hover:bg-light-gray dark:hover:text-black m-2'
@@ -63,6 +63,9 @@ const Sidebar = () => {
                       <NavLink className={({isActive}) => isActive ? activeLink : normalLink}
                       to={`/${link.name}`} key ={link.name}
                       onClick = {handleCloseSideBar}
+                      style = {({isActive}) => (
+                        {backgroundColor: isActive ? currentColor : ''}
+                      )}
                       >
                       {console.log(link.name)}
                       <span className='text-green-700'>{link.icon}</span>

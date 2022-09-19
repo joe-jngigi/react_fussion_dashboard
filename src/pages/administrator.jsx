@@ -8,7 +8,7 @@ import { earningData, SparklineAreaData,ecomPieChartData } from '../data/dummy'
 
 import { useStateContext } from '../contexts/context_provider'
 const Administrator = () => {
-//   const [activeMenu] = useStateContext();
+  const {currentColor, activeMenu} = useStateContext();
   return (
     <div className='mt-12'>
       {/* SECTION ONE */}
@@ -24,7 +24,7 @@ const Administrator = () => {
             </div>
           </div>
           <div className='mt-6'>
-              <Button color = 'white' bgColor = 'blue' text = 'Download' borderRadius = '10px' size='md'/>
+              <Button color = 'white' bgColor = {currentColor} text = 'Download' borderRadius = '10px' size='md'/>
           </div>
         </div>
 
@@ -96,18 +96,20 @@ const Administrator = () => {
 
               {/* CHART ONE */}
               <div className="mt-5">
-                <SparkLine currentColor = 'blue' id = 'line-sparkline' type = 'line' height = '80px' width = '250px' data = {SparklineAreaData} color = 'blue' />
+                <h2>Chart for sparkline</h2>
+                {/* <SparkLine currentColor = {currentColor} id = 'line-sparkline' type = 'line' height = '80px' width = '250px' data = {SparklineAreaData} color = {currentColor} /> */}
               </div>
 
               {/* BUTTON */}
               <div className='mt-10'>
-                <Button color = 'white' bgColor = 'blue' text = 'Download Report' borderRadius = '10px'/>
+                <Button color = 'white' bgColor = {currentColor} text = 'Download Report' borderRadius = '10px'/>
               </div>
             </div>
 
             {/* RIGHT-SIDE CHART */}
             <div>
-              <Stacked  height = '360px' width = '320px' />
+              <h2>Stacked Char component</h2>
+              {/* <Stacked  height = '360px' width = '320px' /> */}
             </div>
           </div>
         </div>

@@ -16,15 +16,16 @@ import './App.css';
 import { useStateContext } from './contexts/context_provider';
 const App = () => {
   //In the context_provider, the statevalue for active menu is 'true'
-  const {activeMenu} = useStateContext()
+  const {activeMenu, themeSettings, setThemeSettings, currentColor, currentMode} = useStateContext()
   return (
-    <div>
+    <div className={currentMode === 'Dark' ? 'dark' : ''}>
       <BrowserRouter>
       <div className="flex relative dark:bg-main-dark-bg">
         <div className="fixed right-4 bottom-4" style={{zIndex: '1000'}}>
           <TooltipComponent content="Settings" position='Top' >
             <button type='button' className='text-3xl p-3 hover:drop-shadow-xl hover:bg-light-gray text-white'
-            style={{background:'blue', borderRadius: '50%'}}>
+            style={{color:{currentColor}, borderRadius: '50%'}}
+            onClick = {() => setThemeSettings(true)}>
               <FiSettings/>
             </button>
           </TooltipComponent>
@@ -47,7 +48,7 @@ const App = () => {
 
         
         <div className={
-          `'dark:bg-main-bg bg-main-bg min-h-screen w-full
+          `dark:bg-main-dark-bg bg-main-bg min-h-screen w-full
           ${ activeMenu ? 'md:ml-72': 'flex-2'}`}>
         
           {/* navigation bar code  */}
@@ -57,10 +58,11 @@ const App = () => {
 
           {/* this will be main routing to different pages */}
           <div>
+            {themeSettings && <ThemeSettings/>}
             <Routes>
               {/* Dashboard */}
               <Route path='/' element = {<Administrator/>}/>
-              <Route path='/admin_main' element = {<Administrator/>}/>
+              <Route path='/Administrator' element = {<Administrator/>}/>
 
               {/* Pages */}
               <Route path='/orders' element = {<Orders/>}/>
@@ -71,7 +73,7 @@ const App = () => {
               <Route path='/calendar' element = {<Calendar/>}/>
               <Route path='/kanban' element = {<Kanban/>}/>
               <Route path='/editor' element = {<Editor/>}/>
-              <Route path='/color_picker' element = {<ColorPicker/>}/>
+              <Route path='/Color_Picker' element = {<ColorPicker/>}/>
 
               {/* Charts */}
               <Route path='/line' element = {<Line/>}/>

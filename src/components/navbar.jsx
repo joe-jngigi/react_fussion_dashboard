@@ -12,7 +12,7 @@ import {Cart, Chat, Notification, UserProfile} from '.'
 import { useStateContext } from "../contexts/context_provider"
 
 const Navbar = () => {
-  const {activeMenu, setActiveMenu, isClicked, setisclicked, handleClick, screenSize, setscreenSize } = useStateContext();
+  const {activeMenu, setActiveMenu, isClicked, currentColor, setisclicked, handleClick, screenSize, setscreenSize } = useStateContext();
   // console.log(isClicked)
   // console.log(setisclicked)
   // console.log(handleClick)
@@ -37,7 +37,7 @@ const Navbar = () => {
     <div className="flex justify-between p-2 md:mx-6 relative ">
       {/* pass the props */}
       {/* CLOSE SIDEBAR BUTTON */}
-      <NavButton title='Menu' color='blue' icon={<AiOutlineMenu/>} 
+      <NavButton title='Menu' color={currentColor} icon={<AiOutlineMenu/>} 
       // callback function
       customFun={() => setActiveMenu(
         // Another callback function
@@ -46,13 +46,13 @@ const Navbar = () => {
 
       {/* NAVIGATE DIFFERENT MINI_APP ACTIONS AND PROFILE INFORMATION */}
       <div className="flex">
-          <NavButton title='Cart' color='blue' icon={<FiShoppingCart/>}
+          <NavButton title='Cart' color={currentColor} icon={<FiShoppingCart/>}
             customFun={() => handleClick('cart')}
           />
-          <NavButton title='Chat' dotColor='#03C9D7' color='blue' icon={<BsChatLeft/>}
+          <NavButton title='Chat' dotColor='#03C9D7' color={currentColor} icon={<BsChatLeft/>}
             customFun={() => handleClick('chat')}
           />
-          <NavButton title='Notifications' dotColor='#03C9D7' color='blue' icon={<RiNotification3Line/>} 
+          <NavButton title='Notifications' dotColor='#03C9D7' color={currentColor} icon={<RiNotification3Line/>} 
             customFun={() => handleClick('notification')}
           />
 
