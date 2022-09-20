@@ -96,8 +96,8 @@ const Administrator = () => {
 
               {/* CHART ONE */}
               <div className="mt-5">
-                <h2>Chart for sparkline</h2>
-                {/* <SparkLine currentColor = {currentColor} id = 'line-sparkline' type = 'line' height = '80px' width = '250px' data = {SparklineAreaData} color = {currentColor} /> */}
+                {/*<SparkLine currentColor = {currentColor} id = 'line-sparkline' type = 'line' height = '80px' 
+	    width = '250px' data = {SparklineAreaData} color = {currentColor} />*/}
               </div>
 
               {/* BUTTON */}
@@ -108,8 +108,7 @@ const Administrator = () => {
 
             {/* RIGHT-SIDE CHART */}
             <div>
-              <h2>Stacked Char component</h2>
-              {/* <Stacked  height = '360px' width = '320px' /> */}
+              <Stacked  height = '360px' width = '320px' />
             </div>
           </div>
         </div>
