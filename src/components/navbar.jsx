@@ -87,7 +87,7 @@ const Navbar = () => {
 const NavButton = ({title, customFun, icon, color, dotColor}) => (
   //The component is like a function, so data is passed from the parent (props)
   <TooltipComponent content={title} position="BottomCenter">
-    <button type="button" onClick={customFun} color ={{color}}
+    <button type="button" onClick={customFun} style ={{color}}
     className="relative text-xl rounded-full p-3 hover:bg-light-gray"
     >
       <span className="absolute inline-flex rounded-full h-2 w-2 right-2 top-2" 
