@@ -12,7 +12,7 @@ import {Cart, Chat, Notification, UserProfile} from '.'
 import { useStateContext } from "../contexts/context_provider"
 
 const Navbar = () => {
-  const {activeMenu, setActiveMenu, isClicked, currentColor, setisclicked, handleClick, screenSize, setscreenSize } = useStateContext();
+  const { setActiveMenu, isClicked, currentColor, handleClick, screenSize, setscreenSize } = useStateContext();
   // console.log(isClicked)
   // console.log(setisclicked)
   // console.log(handleClick)
@@ -24,7 +24,7 @@ const Navbar = () => {
     handleResize();
 
     return() => window.removeEventListener('resize', handleResize)
-  },[])
+  },[setscreenSize])
 
   useEffect(() =>{
     if (screenSize <= 900){
@@ -32,7 +32,7 @@ const Navbar = () => {
     }else{
       setActiveMenu(true)
     }
-  }, [screenSize ])
+  }, [screenSize, setActiveMenu])
   return (
     <div className="flex justify-between p-2 md:mx-6 relative ">
       {/* pass the props */}

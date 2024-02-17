@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 
 // It enables navigation between views from different components in a React
 // application, allows the browser URL to be changed, and keeps the UI in 
@@ -8,7 +8,7 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import {FiSettings} from 'react-icons/fi';
 import { TooltipComponent } from '@syncfusion/ej2-react-popups';
 
-import { Navbar,Sidebar,Footer,ThemeSettings } from './components';
+import { Navbar, Sidebar, ThemeSettings } from './components';
 import { Administrator, Kanban, Orders, Employees, Editor, Customers, ColorPicker,
 Calendar, Area, Bar, ColorMapping,Financial, Line, Pie, Pyramid, Stacked} from './pages';
 import './App.css';

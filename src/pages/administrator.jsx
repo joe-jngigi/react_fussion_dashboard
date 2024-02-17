@@ -1,14 +1,13 @@
 import React from 'react'
-import { BsCurrencyBitcoin } from 'react-icons/bs'
-import {GoPrimitiveDot} from 'react-icons/go'
+import {GoDotFill} from 'react-icons/go'
 
-import { Stacked, Pie, Button, SparkLine } from '../components'
+import { Stacked,  Button, } from '../components'
 
-import { earningData, SparklineAreaData,ecomPieChartData } from '../data/dummy'
+import { earningData, } from '../data/dummy'
 
 import { useStateContext } from '../contexts/context_provider'
 const Administrator = () => {
-  const {currentColor, activeMenu} = useStateContext();
+  const {currentColor} = useStateContext();
   return (
     <div className='mt-12'>
       {/* SECTION ONE */}
@@ -63,11 +62,11 @@ const Administrator = () => {
             <p className='font-semibold text-xl'>Revenue Updates</p>
             <div className="flex gap-4 items-center">
               <p className="flex gap-2 text-gray-600 hover:drop-shadow-xl items-center">
-                <span><GoPrimitiveDot/></span>
+                <span><GoDotFill/></span>
                 <span>Expense</span>
               </p>
               <p className="flex gap-2 text-green-600 hover:drop-shadow-xl items-center">
-                <span><GoPrimitiveDot/></span>
+                <span><GoDotFill/></span>
                 <span>Budget</span>
               </p>
             </div>

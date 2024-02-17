@@ -3,7 +3,6 @@ export { default as Button } from './button';
 export { default as ThemeSettings } from './theme_settings';
 export { default as Sidebar } from './sidebar';
 export { default as Navbar } from './navbar';
-export { default as Footer } from './footer';
 
 export { default as Cart } from './cart';
 export { default as Chat } from './chats';

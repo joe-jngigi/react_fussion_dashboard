@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { LineChart, ChartsHeader, Header } from '../../components'
+import { LineChart, Header } from '../../components'
 
 const Line = () => {
   return (
